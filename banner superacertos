@@ -1,0 +1,85 @@
+<!-- Banner TigerClub - Responsivo com botão de fechar maior -->
+<style>
+  #tiger-banner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 12px;
+    border-radius: 16px;
+    max-width: 90vw;
+    width: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  }
+
+  #tiger-banner img {
+    width: 90vw;
+    max-width: 450px;
+    height: auto;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+
+  #close-tiger-banner {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 48px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s;
+  }
+
+  #close-tiger-banner:hover {
+    transform: scale(1.1);
+    background: #cc0000;
+  }
+
+  @media (max-width: 500px) {
+    #close-tiger-banner {
+      width: 44px;
+      height: 44px;
+      font-size: 26px;
+      line-height: 44px;
+    }
+  }
+</style>
+
+<div id="tiger-banner">
+  <button id="close-tiger-banner" title="Fechar">&times;</button>
+  <a href="https://www.superacertos.link" target="_blank">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhpOaHgdCvuS1jOfBoT5DckEvTn2mWeJxBkWC_Co2UtcawdPYNi8qdDWt8DS0p-gW5RJsJlWNojDCC9EVQ8gIoGpKtQRg4tjlYX4jRlZlH7dYsb6Ms0MmpxrO3DibCsMMyeCO3gDnrJ5MxzTluOhY153DSFZnJXORc_IrhJJBx8mGDtCu5Knexz8W3WiYG/w400-h400/WhatsApp%20Image%202026-06-10%20at%2016.43.31.jpeg" alt="Promoção Tiger Club" />
+  </a>
+</div>
+
+<script>
+  window.addEventListener('load', function () {
+    const lastShown = localStorage.getItem('tigerBannerLastShown');
+    const now = new Date().getTime();
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    if (!lastShown || now - lastShown > oneDay) {
+      setTimeout(() => {
+        document.getElementById("tiger-banner").style.display = "block";
+        localStorage.setItem('tigerBannerLastShown', now.toString());
+      }, 5000);
+    }
+
+    document.getElementById("close-tiger-banner").onclick = function () {
+      document.getElementById("tiger-banner").style.display = "none";
+    };
+  });
+</script>
